@@ -7,27 +7,22 @@ include ('../connect.php');
 include ('functions.php');
 ?>
   <head>
+  
     <title>Add Student</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="../css/animate.css">
-
     <link rel="stylesheet" href="../css/aos.css">
-
     <link rel="stylesheet" href="../css/ionicons.min.css">
-    
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
-	
-
 	
   </head>
   
   
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+ <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="background-image:url(../images/bp.jpg);background-repeat: no-repeat;background-attachment:fixed;
+ background-size:100% 100%;">
 	  
 	 
 
@@ -39,18 +34,26 @@ include ('functions.php');
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
+	           <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="ahome.php" class="nav-link"><span>Home</span></a></li>
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>Add Student</span></a></li>
-	          <li class="nav-item"><a href="#" class="nav-link"><span>Add Teacher</span></a></li>
-	          <li class="nav-item"><a href="#" class="nav-link"><span>Add Staff</span></a></li>
-			  <li class="nav-item dropdown"><a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown"><span>View</span></a>
+	          <li class="nav-item"><a href="addteacher.php" class="nav-link"><span>Add Teacher</span></a></li>
+			<li class="nav-item dropdown"><a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown"><span>Add</span></a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Students</a>
-					<a class="dropdown-item" href="#">Teachers</a>
-					<a class="dropdown-item" href="#">Staff</a>
+					<a class="dropdown-item" href="addSubjects.php">Subjects</a>
+					<a class="dropdown-item" href="addperformance.php">SGPA</a>
+					<a class="dropdown-item" href="feestatus.php">Fee Status</a>
+	
 				</div>
 			</li>
-			  <li class="nav-item dropdown"><a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown"><span><?php echo  $_SESSION["username"] ; ?></span></a>
+			  <li class="nav-item dropdown"><a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown"><span>View</span></a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="studentview.php">Students</a>
+					<a class="dropdown-item" href="teacherview.php">Teachers</a>
+	
+				</div>
+			</li>
+			  <li class="nav-item dropdown"><a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown"><span><?php echo  $_SESSION["admin"] ; ?></span></a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="#">Profile</a>
 					<a class="dropdown-item" href="logout.php">Logout</a>
@@ -64,7 +67,7 @@ include ('functions.php');
 	
  <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
     	
-		<div class="container shadow rounded-lg" data-aos="fade-up" data-aos-duration="2000" style="margin-top:150px;">
+		<div class="container shadow bg-white rounded-lg" data-aos="fade-up" data-aos-duration="2000" style="margin-top:150px;">
     		<div class="row ">
 			<div class="col-lg-12">
 			<h2 class="text-center mt-2">ADD STUDENT</h2>
@@ -75,7 +78,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Name : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" class="form-control" name="Name"  required autofocus>
@@ -91,10 +93,24 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">USN : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" class="form-control" name="USN"  required>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-8 col-sm-12">
+					<div class="row">
+						<div class="col-lg-4 col-sm-2">
+							<h5 class="mt-2 ml-2">DOB : </h5>
+						</div>
+						<div class="col-lg-8 col-sm-10">
+							<div class="form-group">
+								<input type="date" class="form-control" name="DOB" min="1994-01-01" max="2005-12-31" required>
 							</div>
 						</div>
 					</div>
@@ -107,7 +123,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Father Name : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" class="form-control" name="fname"  required>
@@ -123,7 +138,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Mother Name : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" class="form-control" name="mname"  required>
@@ -139,7 +153,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Address : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" class="form-control" name="address" required>
@@ -155,7 +168,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Phone : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="number" size="10" name="phone" maxlength="10" class="form-control" required>
@@ -171,7 +183,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Email : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="email" name="email" class="form-control" required>
@@ -187,7 +198,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Gender : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10 mt-2">
 							   <div class="custom-control custom-radio custom-control-inline">
 									<input type="radio" class="custom-control-input" id="customRadio" name="Gender" value="Male">
@@ -208,7 +218,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Photo : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="custom-file">
 								<input type="file" class="custom-file-input" name="image" id="customFile" required>
@@ -218,13 +227,13 @@ include ('functions.php');
 					</div>
 				</div>
 			</div>
+			
 			 <div class="row">
 				<div class="col-lg-8 col-sm-12 mt-3">
 					<div class="row">
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Blood Group : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<select name="blood" class="custom-select" required>
 								<option selected> Select From Below</option>
@@ -248,7 +257,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Seat Type : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<?php getFeeID($dbc);?>
 						</div>
@@ -262,7 +270,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Branch : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<?php getBranch($dbc); ?>
 						</div>
@@ -276,7 +283,6 @@ include ('functions.php');
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">SSID : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<?php getSSID($dbc); ?>
 						</div>
@@ -284,13 +290,12 @@ include ('functions.php');
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row mt-2">
 				<div class="col-lg-8 col-sm-12">
 					<div class="row">
 						<div class="col-lg-4 col-sm-2">
 							<h5 class="mt-2 ml-2">Password : </h5>
 						</div>
-			  
 						<div class="col-lg-8 col-sm-10">
 							<div class="form-group">
 								<input type="text" name="password" class="form-control" required>
@@ -327,6 +332,7 @@ $seat="";
 $branch="";
 $SSID="";
 $password="";
+$dob="";
 
 
 
@@ -335,7 +341,8 @@ if (isset($_POST['submit']) && !empty($_POST['Name'])&& !empty($_POST['USN'])&& 
 ) {	
    
 $Name=$_POST["Name"];
-$USN=$_POST["USN"];
+$usn=$_POST["USN"];
+$dob=$_POST["DOB"];
 $fname=$_POST["fname"];
 $mname=$_POST["mname"];
 $address=$_POST["address"];
@@ -347,7 +354,9 @@ $seat=$_POST["seat"];
 $branch=$_POST["branch"];
 $SSID=$_POST["ssid"];
 $password=$_POST["password"];
+$USN=checkifUSN($usn);
 
+$PHONE=checkifphone($phone);
 
 if(!empty($_FILES["image"]["name"])) { 
         // Get file info 
@@ -361,11 +370,12 @@ if(!empty($_FILES["image"]["name"])) {
 $imgContent = addslashes(file_get_contents($image));}}
 
 
-
-        $query = "INSERT INTO student (USN, NAME, PIC, GENDER,ADDRESS, BLDGRP, PHONE, EMAIL, FEE_ID, FATHER_NAME, MOTHER_NAME, SSID, BRANCH_ID, PASSWD) VALUES ('$USN','$Name',
-		'$imgContent','$Gender','$address','$blood',$phone,'$email','$seat','$fname','$mname','$SSID','$branch','$password')";
+if($USN!="" && $PHONE!=""){
+   $query = "INSERT INTO student (USN, NAME,DOB, PIC, GENDER,ADDRESS, BLDGRP, PHONE, EMAIL, FEE_ID, FATHER_NAME, MOTHER_NAME, SSID, BRANCH_ID, PASSWD) VALUES ('$USN','$Name',
+   '$dob', '$imgContent','$Gender','$address','$blood',$PHONE,'$email','$seat','$fname','$mname','$SSID','$branch','$password')";
         addStudent($dbc,$query);
 		
+}
 		ob_flush();
 }
 ?>

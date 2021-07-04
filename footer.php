@@ -1,4 +1,4 @@
- <footer class="ftco-footer ftco-section">
+ <footer id="footer" class="ftco-footer ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
@@ -26,12 +26,15 @@
           </div>
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Services</h2>
+              <h2 class="ftco-heading-2">Accreditions</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Technical Courses</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>UG PG courses</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Placements</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Cultural activities</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>UGC</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>AICTE</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>NAAC</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>NBA</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>NIRF</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>TEQIP</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>VTU AFFILIATED</a></li>
               </ul>
             </div>
           </div>

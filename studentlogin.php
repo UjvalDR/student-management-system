@@ -9,24 +9,19 @@
 ?>
 
   <head>
+  
     <title>Student Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="css/animate.css">
-
     <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/ionicons.min.css">
-    
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 	
-
-	
   </head>
+  
     <?php
             $msg = '';
           
@@ -36,14 +31,17 @@
 				
                 $username=$_POST['USN'];
                 $password=$_POST['password'];
-                $result = @mysqli_query($dbc, "select count(1),NAME from student where USN='$USN' and PASSWD='$password' ");
-                $row = mysqli_fetch_array($result, MYSQLI_NUM);
-                $noOfrecords=$row[0];
-				$user=$row[1];
+				$result = $dbc->query("SELECT count(1),usn,name from student where usn='$username' and passwd='$password'"); 
+				while($row = $result->fetch_assoc()){
+                $noOfrecords=$row['count(1)'];
+				$user=$row['usn'];
+				$name=$row['name'];
+			 }
                 
                if ($noOfrecords>0) {
-                  $_SESSION['username'] = $user;
-                  header('Location: studenthome.php');  
+                  $_SESSION['usn'] = $user;
+				  $_SESSION['studentname'] = $name;
+                  header('Location: student/shome.php');  
                }else {
                   $msg = 'Wrong username or password';
                }
@@ -68,8 +66,9 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
 	          <li class="nav-item"><a href="#" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="adminlogin.php" class="nav-link"><span>Admin</span></a></li>
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>Student</span></a></li>
-	          <li class="nav-item"><a href="teacher.html" class="nav-link"><span>Teacher</span></a></li>
+	          <li class="nav-item"><a href="teacherlogin.php" class="nav-link"><span>Teacher</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -98,8 +97,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-    	</div>
+			
  </section>
 
 

@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+   ob_start();
+   session_start();
+   $page_title = 'Login Page';
+   include ('connect.php');
+?>
+
   <head>
+  
     <title>Teacher Login</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="css/animate.css">
-
     <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
+    <link rel="stylesheet" href="css/ionicons.min.css"> 
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-	
 
-	
   </head>
+  
+     <?php
+            $msg = '';
+          
+           //logic to check if correct user id and password entered - Start()
+            if (isset($_POST['login']) && !empty($_POST['username']) 
+               && !empty($_POST['password'])) {
+				
+                $username=$_POST['username'];
+                $password=$_POST['password'];
+				$result = $dbc->query("SELECT count(1),Teacher_id,T_name from TEACHER where T_email='$username' and T_password='$password'"); 
+				while($row = $result->fetch_assoc()){
+                $noOfrecords=$row['count(1)'];
+				$user=$row['Teacher_id'];
+				$name=$row['T_name'];
+			 }
+                
+               if ($noOfrecords>0) {
+                  $_SESSION['teacher'] = $user;
+				  $_SESSION['T_name']=$name;
+                  header('Location: teacher/thome.php');  
+               }else {
+                  $msg = 'Wrong username or password';
+               }
+                
+              
+            }
+          //logic to check if correct user id and password entered - End()
+         ?>
   
   
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" class="bg" style="background-image:url(images/tt.jpg);background-position:cover;width:100%;height:auto">
@@ -35,7 +65,8 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
 	          <li class="nav-item"><a href="#" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="login.html" class="nav-link"><span>Student</span></a></li>
+	          <li class="nav-item"><a href="adminlogin.php" class="nav-link"><span>Admin</span></a></li>
+	          <li class="nav-item"><a href="studentlogin.php" class="nav-link"><span>Student</span></a></li>
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>Teacher</span></a></li>
 	        </ul>
 	      </div>
@@ -48,24 +79,24 @@
 				<div class="col-md-1 col-lg-1"></div>
     			<div class="col-sm-12 col-md-8 col-lg-8 mx-auto p-3  shadow-lg  bg-white" style="border-radius:30px;">
     				 <h2 class="text-center">TEACHER LOGIN</h2>
-							<form action="#" class=" p-4 p-md-5 contact-form">
+					 <h5 class="text-center text-danger mt-4"><?php echo $msg; ?></h5>
+							<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post"  class=" p-4 p-md-5 contact-form">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Email" required>
+									<input type="text" class="form-control" name="username" placeholder="Email" required>
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control" placeholder="Password" required>
+									<input type="password" class="form-control" name="password" placeholder="Password" required>
 								</div>
              
 								<div class="col text-center">
-									<input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
+									<input type="submit" name="login" value="Submit" class="btn btn-primary py-3 px-5">
 								</div>
 							</form>
           
 						</div>
 					</div>
 				</div>
-			</div>
-    	</div>
+			
  </section>
 
 

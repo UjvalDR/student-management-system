@@ -3,30 +3,25 @@
 <?php
    ob_start();
    session_start();
-   $page_title = 'Login Page';
+   $page_title = 'Admin Login Page';
    include ('connect.php');
 ?>
 
 <html lang="en">
   <head>
+  
     <title>Admin Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="css/animate.css">
-
     <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/ionicons.min.css">
-    
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 	
-
-	
   </head>
+  
     <?php
             $msg = '';
           
@@ -42,8 +37,8 @@
 				 $user=$row[1];
                 
                if ($noOfrecords>0) {
-                  $_SESSION['username'] = $user;
-                  header('Location: admin/addstudent.php');  
+                  $_SESSION['admin'] = $user;
+                  header('Location: admin/ahome.php');  
                }else {
                   $msg = 'Wrong username or password';
                }
@@ -71,7 +66,7 @@
 	        </ul>
 	      </div>
 	    </div>
-	  </nav>
+	 </nav>
 	
  <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section" style="margin-top:150px;margin-bottom:150px;">
     	<div class="container" data-aos="zoom-in" data-aos-duration="2000">
@@ -97,8 +92,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-    	</div>
+			
  </section>
 
 

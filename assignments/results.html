@@ -1,0 +1,501 @@
+<html lang="en"><head>
+	<title>Result</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="http://results.drait.in/img/logo.jpg" type="image/jpg">
+	<script type="text/javascript" src="http://results.drait.in/js/jquery.js"></script>
+	<link rel="stylesheet" href="http://results.drait.in/js/jquery-ui.css">
+	<script src="http://results.drait.in/js/jquery-1.12.4.js"></script>
+	<script src="http://results.drait.in/js/jquery-ui.js"></script>
+	<script type="text/javascript"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+			</head><body cz-shortcut-listen="true"><img src="http://results.drait.in/img/LOGO1.png" style="width:85px;height:85px;width:7.63vw;height:7.63vw" align="left">
+			
+	
+	<style>
+	*{
+	  box-sizing: border-box;
+	}
+
+	body 
+	{
+	  margin: 0;
+	}
+
+	/* Style the header */
+	.header 
+	{
+	  background-color: #f1f1f1;
+	  padding: 0px;
+	  text-align: center;
+	}
+
+	/* Style the top navigation bar */
+	.topnav {
+	  overflow: hidden;
+	  background-color: #333;
+	}
+	/* Create three unequal columns that floats next to each other */
+	.column {
+	  float: left;
+	  padding: 1px;
+	}
+
+	/* Left and right column */
+	.column.side {
+	  width: 20%;
+	  overflow:hidden;
+	}
+
+	/* Middle column */
+	.column.middle {
+	  width: 80%;
+	  overflow:auto;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+	/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 600px) {
+	  .column.side, .column.middle {
+		width: 100%;
+	  }
+	}
+	.vertical-menu {
+	  width: 200px;
+	}
+
+	.vertical-menu a {
+	  background-color: #eee;
+	  color: black;
+	  display: block;
+	  padding: 12px;
+	  text-decoration: none;
+	}
+
+	.vertical-menu a:hover {
+	  background-color: #ccc;
+	}
+
+	.vertical-menu a.active {
+	  background-color: #0BA889;
+	  color: white;
+	}
+	.btn {
+	  border: none;
+	  outline: none;
+	  width:230px;
+	  padding: 10px;
+	  background-color: #f1f1f1;
+	  cursor: pointer;
+	  font-size: 18px;
+	  text-align:left;
+	}
+
+	/* Style the active class, and buttons on mouse-over */
+	.active, .btn:hover {
+	  background-color: #666;
+	  color: white;
+	}
+	
+	.error {color: #FF0000;}
+	h1 
+	{ 
+		display:inline; 
+	} 
+	h4 
+	{ 
+		display:inline; 
+	} 
+	header
+	{
+		padding: 1em;
+		clear: left;
+		text-align: center;
+	}
+	fieldset {
+	  height: 10%;
+	}
+	
+</style>
+
+
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<font color="#C4F8C8">
+		<fieldset class="header" ;="" style="background-color:#0BA889;font-size:12px;font-size:1.33vw">
+			<center>
+				<label style="width:50%;font-size:14;font-size:2.8vw">Dr. AMBEDKAR INSTITUTE OF TECHNOLOGY</label>
+				<br>
+				<label style="width:50%;font-size:9px;font-size:1.30vw">(An Autonomous Institute Aided by Government of Karnataka, Affiliated to VTU-Belagavi.)</label>
+				<br>
+				<label style="width:50%;font-size:9px;font-size:1.53vw">Mallathahalli, BDA Outer Ring Road, Near Jnana Bharathi Campus, Bengaluru - 560056</label>
+			</center>
+		</fieldset>
+		<br>
+	<font color="blue">
+	<div class="row">
+		<div class="column side">
+			<div id="myDIV">
+				<button class="btn">Home   </button><br>
+				<button class="btn" onclick="loadOtherDiv1();">Faculty</button>
+				<button class="btn active" onclick="loadOtherDiv2();">Student</button>
+			</div>
+		</div>
+		<script>
+			// Add active class to the current button (highlight it)
+			var header = document.getElementById("myDIV");
+			var btns = header.getElementsByClassName("btn");
+			for (var i = 0; i < btns.length; i++) {
+			  btns[i].addEventListener("click", function() {
+			  var current = document.getElementsByClassName("active");
+			  current[0].className = current[0].className.replace(" active", "");
+			  this.className += " active";
+			  });
+			}
+		</script>
+	  
+		<div class="column middle" id="column_middle">	
+
+
+	<script type="text/javascript" src="http://results.drait.in/js/jquery.js"></script>
+	<!--http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js-->
+	
+	<link rel="stylesheet" href="http://results.drait.in/js/jquery-ui.css">
+	<script src="http://results.drait.in/js/jquery-1.12.4.js"></script>
+	<script src="http://results.drait.in/js/jquery-ui.js"></script>
+		
+	<script type="text/javascript">
+		function back()
+		{
+			$.post("http://results.drait.in/student_index.php",function(data){
+					$("#column_middle").html(data);
+			});
+			//window.location="http://results.drait.in";
+		}
+		function print_page() 
+		{
+			var printButton = document.getElementById("print");
+			var backButton = document.getElementById("backid");
+			printButton.style.visibility = 'hidden';
+			backButton.style.visibility = 'hidden';
+			window.print();
+			printButton.style.visibility = 'visible';
+			backButton.style.visibility = 'visible';
+		}
+	</script>
+	
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<style type="text/css" media="print">
+		  @page { size: landscape; }
+		  @media print {
+			#header, #footer {visibility: visible;}
+		  }
+		</style>
+		<style>
+							
+			#table_align
+			{
+			  position:relative;
+			  margin: 10px 10px 10px 50px;
+			}
+			#footer
+			{
+				position:relative;
+				left:0;
+				bottom:0;
+				
+			}
+			#label {
+				margin: 0; 
+				padding: 0; 
+				display: block; 
+				width: 80%;
+				text-align:left;
+				margin: 0px 0px 0px 20%;
+			}&#8203;
+			#button
+			{
+				position:absolute;
+				display: inline-block;
+				float:static;
+				width:25%;
+				margin: 0px .2em 1px 210px;
+				height: 40px;
+				border: 0px solid green;
+			}
+			.backPos{
+			   position:float;
+			   margin: 0px 0px 0px 0px;
+		</style>
+	
+		<p><font color="black">
+		</font></p>
+	
+	
+	
+	
+		
+		<label style="font-size:15px; color:black"><font>NAME:<i style="Color:blue">UJVAL  D R</i></font></label><font>
+		<br><label style="font-size:15px;color:black"><font>TEMP_USN:<i style="Color:blue"></i></font></label><font>
+		<br><label style="font-size:15px;color:black"><font>USN:<i style="Color:blue">1DA18CS173</i></font></label><font>
+		<br><label style="font-size:15px;color:black"><font>SEMESTER:<i style="Color:blue">5</i></font></label><font>
+		<br><label style="font-size:15px;color:black"><font>BRANCH:<i style="Color:blue">CS</i></font></label><font>
+		<br><label style="font-size:15px;color:black"><font>RESULT YEAR:<i style="Color:blue">2021-01-01</i></font></label><font>
+		<div style="overflow-x:auto;">	
+			<font color="white">
+					</font><table class="table-align" id="tableData" style="width:70%" border="2">
+			<thead>
+				<tr>
+					<th style="font-size:15px;color:white;background-color:MidnightBlue;">Subject</th>
+					<th style="font-size:15px;color:white;background-color:MidnightBlue;">Credits(R)</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">CIE-1</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Att-l</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">CIE-2</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Att-2</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">CIE-M</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Att-F</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Assignment</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Group Activity</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">Final CIE</th>
+					<th style="font-size:15px;width=7%;color:white;background-color:MidnightBlue;">SEE Grade</th>
+					<th style="font-size:15px;width=15%;color:white;background-color:MidnightBlue;">Result YEAR</th>
+				</tr>
+			</thead>
+			<tbody>
+												<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CS51</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">3.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>23</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>22</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>46</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>B</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CS52</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">4.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>20</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>22</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>4</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>4</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>42</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>B</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CS53</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">3.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>24</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>25</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>49</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>A</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CS54</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">4.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>25</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>25</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>50</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>A</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">20MCAE01</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">3.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>24</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>25</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>49</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>B</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CS553</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">3.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>24</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>23</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>333</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>48</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>B</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CSL56</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">1.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>47</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>47</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>S</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18CSL57</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">1.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>47</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>47</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>S</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18HS52</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">3.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>22</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>24</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>5</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>47</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>B</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+							<tr id="somerow">
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">18HS53</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;">0.00</td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>29</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>29</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center></center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>39</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>PP</center></td>
+							<td style="font-size: 15px;height= 30px;color:black;background-color:white;"><center>2021-01-01</center></td>
+							</tr>
+				</tbody>
+			</table><font color="white">
+		</font></div><font color="white">
+		<br>
+		<input class="backPos" id="backid" style="width: 100px;height:28px;" type="submit" name="backbt" value="Back" onclick="back();">
+		<input class="backPos" id="print" style="width: 100px;height:28px;" type="submit" name="print" value="Print" onclick="print_page();">
+		
+		<div class="block">
+			<font color="red">
+			<label style="font-size:17px;"><font>NOTE: </font></label><font>
+			<br><label style="font-size:20px;"><b><font>*  This Result is Generated Purely Based on VTU Guidelines </font></b></label><font>
+			<br><label style="font-size:17px;"><font>* If there is  Subject Registration and credits  issues, contact AUTONOMOUS EXAMINATION SECTION</font></label><font>
+			<br><label style="font-size:17px;"><font>* Subject Marks and Attendance related issues, contact your SUBJECT TEACHER </font></label><font>
+			<br><label style="font-size:15px;"><i>* Final CIE = (Addition of best two CIE marks * 0.8) + Assignment + Group Activity(FOR 175 or 135 Credit System)</i></label>
+			<br><label style="font-size:15px;"><i>* Final CIE = (Addition of best two CIE marks * 0.667) + Assignment + Group Activity(FOR 175 or 135 Credit System OMR Based CIE 30 Marks)</i></label>
+			<br><label style="font-size:15px;"><i>* Final CIE = (Addition of best two CIE marks * 0.9) + Assignment (FOR 200 or 150 Credit System)</i></label>
+			<br><label style="font-size:15px;"><i>* Final CIE = (Addition of best two CIE marks * 0.75) + Assignment (FOR 200 or 150 Credit System OMR Based CIE 30 Marks)</i></label>
+			<font color="blue">
+			<br><label style="font-size:12px;"><i>* 333 - Absent / Not Allowed</i></label>
+			<label style="font-size:12px;"><i> Att.- Attendance</i></label> 
+			<label style="font-size:12px;"><i> Credits(R).- Credits Registered / Course Credits</i></label>
+			<br><label style="font-size:12px;"><i>* For 2018-19 batch and Onwords: S-Outstanding (90-100); A-Excellent (80-89); B-Very Good (70-79); C-Good (60-69); D-Average (50-59) E-Poor (40-49); F-Fail (&lt;40);</i></label>
+			<br><label style="font-size:12px;"><i>* Till 2017 Batch: S-Outstanding (90-100); A-Excellent (75-89); B-Very Good (60-74); C-Good (50-59); D-Average (45-49) E-Poor (40-44); F-Fail (&lt;40)</i></label>
+			<br><label style="font-size:12px;"><i>*  PP-Passed; NP-Not Passed; 333 - Absent / Not Allowed; 111 - Malpractice;</i></label>
+			<label style="font-size:12px;"><i>NSC - Not satisfied CIE;  NSA-Not Satisfied Attendance Requirement; W-Withdrawn from the Course; </i></label>
+			<br><label style="font-size:12px;"><i>* TAL-To be Announced Later; NA-Not Applicable;  X-Eligible for Make Up Exam </i></label>
+			<font color="black">
+			<br><label style="font-size:16px;"><i>Disclaimer: The result published in this website is provisional only. This is being published on the web just for immediate information to the examinees.</i></label>
+			<label style="font-size:16px;"><i>The Final Result sheets / Marks card issued by the Institute should only be treated authentic &amp; final in this regard. These Provisional Result will be considered by the Institute, further, only based on DEAN (Examinations) approval.</i></label>
+		</font></font></font></font></font></font></font></div><font color="red"><font><font><font><font color="blue"><font color="black">
+		
+		<div class="backPos">
+			
+	<hr>
+	<center>
+		<!-- Footer Content -->
+		<font color="black">
+		<b><center> ©2021, Autonomous Examination Section, Dr.AIT </center></b>
+ 		<!-- End Footer Content -->
+	</font></center><font color="black">
+
+
+		</font></div><font color="black">
+		
+		
+	
+
+
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></div>
+		<script>
+		
+			function loadOtherDiv1()
+			{
+				$(document).ready(function(){
+				   
+				   $('#column_middle').load("http://results.drait.in/faculty_index.php");
+
+				});
+			}
+			function loadOtherDiv2()
+			{
+				$(document).ready(function(){
+				   
+				   $('#column_middle').load("http://results.drait.in/student_index.php");
+
+				});
+			}
+			
+		</script>
+	</div>
+	  
+
+
+
+</font></font></body></html>
