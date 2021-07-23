@@ -77,10 +77,12 @@ $T_name=$_SESSION['T_name'];
         </div>
     		<div class="row ">
 <?php 
-	$query="select a.ass_name,a.sub_code,s.sub_name,ss.sem,ss.section,a.due,a.ass_loc from assignment a,subjects s,semsec ss where a.ssid=ss.ssid and s.sub_code=a.sub_code  and a.teacher_id='$Tid'"; 
+	$query="select a.ass_no,a.ssid,a.ass_name,a.sub_code,s.sub_name,ss.sem,ss.section,a.due,a.ass_loc from assignment a,subjects s,semsec ss where a.ssid=ss.ssid and s.sub_code=a.sub_code  and a.teacher_id='$Tid'"; 
 	$result = @mysqli_query($dbc, $query);  
         if($result->num_rows > 0){
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){							
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){	
+$ass_no=$row['ass_no'];
+$ssid=$row['ssid'];			
 ?>	 	 
 
 <div class="col-lg-4 my-3 your-element"  data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
@@ -93,7 +95,7 @@ $T_name=$_SESSION['T_name'];
 	<label class="text-dark">Class : &nbsp;</label><span class=text-dark><?php echo $row['sem'].' Sem '.$row['section'].' section'?></span><br>
 	<label class="text-dark">Due : &nbsp; </label><span class=text-danger><?php echo $row['due']?></span><br>
 	<br>
-	 <div><a class="" href="../assignments/<?php echo $row['ass_loc']?>" target="_blank" ><button  class="btn btn-primary">View</button></a>
+	 <div><a class="" href="assview.php?assno=<?php echo $ass_no;?>&ssid=<?php echo $ssid;?>" ><button  class="btn btn-primary">View</button></a>
 </div>		
 	</div>
    </div>

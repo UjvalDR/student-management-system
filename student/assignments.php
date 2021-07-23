@@ -64,33 +64,34 @@ $usn=$_SESSION['usn'];
         </div>
     		<div class="row ">
 <?php 
-	$query="select a.ass_name,a.sub_code,date_format(a.due,'%d-%m-%Y ') due ,s.sub_name,a.ass_loc,t.t_name,t.t_pic from assignment a,subjects s,student s1,semsec ss,teacher t where s.sub_code=a.sub_code and a.teacher_id = t.teacher_id and ss.sem=s.sem and s1.ssid=ss.ssid and s1.usn='$usn'"; 
+	$query="select a.ass_no,a.ass_name,a.sub_code,date_format(a.due,'%d-%m-%Y ') due ,s.sub_name,a.ass_loc,t.t_name,t.t_pic from assignment a,subjects s,student s1,teacher t where s.sub_code=a.sub_code and a.teacher_id = t.teacher_id and a.ssid=s1.ssid and s1.usn='$usn'"; 
 	$result = @mysqli_query($dbc, $query);  
         if($result->num_rows > 0){
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){							
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){	
+				$ass_no=$row['ass_no'];
 ?>	 	 
 
-<div class="col-lg-4 my-3 your-element"   data-tilt data-tilt-max="1" data-tilt-scale="1.1">
-   <div class="card shadow-lg rounded-lg">
-  <div class=" card-header bg-info"> 
-   <img class="responsive rounded-circle float-left" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['t_pic']); ?>" style="max-width:20%;height:auto">					
-  <h3 class="mb-3 pb-3 mt-3 float-right"><span><?php echo $row['sub_name']?></span></h3>
-  </div>
+	<div class="col-lg-4 my-3 your-element"   data-tilt data-tilt-max="1" data-tilt-scale="1.1">
+		<div class="card shadow-lg rounded-lg" style="min-height:350px; max-height:350px;">
+				<div class="card-header"> 
+					<img class="responsive rounded-circle float-left" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['t_pic']); ?>" style="max-width:20%;height:auto">					
+					<h4 class="mb-3 pb-3 mt-3 float-right"><span><?php echo $row['sub_name']?></span></h3>
+				</div>
   
-   <div class="card-body">
-	<div class="text-center">
-	<label class="text-dark"> Title : &nbsp;</label><span class=text-dark><?php echo $row['ass_name']?></span><br>
-	<label class="text-dark">Subject Code : &nbsp;</label><span class=text-dark><?php echo $row['sub_code']?></span><br>
-	<label class="text-dark">Teacher : &nbsp;</label><span class=text-dark><?php echo $row['t_name']?></span><br>
-	<label class="text-dark" id="due">Due : &nbsp; </label><span class=text-danger><?php echo $row['due']?></span><br>
-	 <div>
-	 <a class="float-left" href="../assignments/<?php echo $row['ass_loc']?>" target="_blank" ><button  class="btn btn-primary">View</button></a>
-	<a href="#myModal"><button  class="btn btn-success float-right"  data-toggle="modal" data-target="#myModal" >Upload</button>
-	</div>		
-    </div>
-   </div>
-   </div>
-</div>
+			<div class="card-body">
+				<div class="text-center">
+					<label class="text-dark"> Title : &nbsp;</label><span class=text-dark><?php echo $row['ass_name']?></span><br>
+					<label class="text-dark">Subject Code : &nbsp;</label><span class=text-dark><?php echo $row['sub_code']?></span><br>
+					<label class="text-dark">Teacher : &nbsp;</label><span class=text-dark><?php echo $row['t_name']?></span><br>
+					<label class="text-dark" id="due">Due : &nbsp; </label><span class=text-danger><?php echo $row['due']?></span><br>
+					<div>
+						<a class="float-left" href="../assignments/<?php echo $row['ass_loc']?>" target="_blank" ><button  class="btn btn-primary">View</button></a>
+						<a href="assupload.php?ass_no=<?php echo $ass_no;?>"><button  class="btn btn-success float-right" >Upload</button>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -110,88 +111,7 @@ $usn=$_SESSION['usn'];
     	</div>
 		
 		
-<!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="text-center">Submit Assignment</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-        <h5 class="text-center"> Hey <b><?php echo $_SESSION['studentname']?> </b>Please submit your work here</h5>
-		 
-		  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" enctype="multipart/form-data" class="p-4 p-md-5 contact-form">
-		
-			
-			<div class="row ">
-				<div class="col-lg-8 col-sm-12 mt-3">
-					<div class="row">
-						<div class="col-lg-4 col-sm-2">
-							<h5 class="mt-2 ml-2">Upload  : </h5>
-						</div>
-			  
-						<div class="col-lg-8 col-sm-10">
-							<div class="custom-file">
-								<input type="file" class="custom-file-input" name="ass" id="customFile" required>
-								<label class="custom-file-label" for="customFile">Select the Assignment doc</label>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
-	
-			
-              <div class="col text-center form-group mt-4">
-                <input type="submit" name="upload" value="Submit" class="btn btn-primary py-3 px-5">
-              </div>
-			  
-            </form>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-	</div>
-	
-	
-
-   
-	<?php 
-							if(isset($_POST['upload'])){
-								
-								$target_path = "../stu_assignments/";
-								$target_path = $target_path . basename ($_FILES['ass']['name']);
-								if(move_uploaded_file($_FILES['ass']['tmp_name'], $target_path))
-								{
-								
-								$ass = basename($_FILES['ass']['name']);
-								$due=date("Y-m-d h:i:s");
-								$qr = "INSERT INTO stu_assingment (usn,sub_time,ass_loc) VALUES ('$usn','$due','$ass')";
-								$res = $dbc->query($qr);
-								if($res === TRUE){
-									echo "<script type = \"text/javascript\">
-											alert(\"assignment Succesfully submitted\");
-											</script>";
-									}
-									else "<script type = \"text/javascript\">
-											alert(\"Failed to submit\");
-											</script>";
-								}
-								else "<script type = \"text/javascript\">
-											alert(\"Failed to submit\");
-											</script>";
-							}
-					?>
  
 </div>
     </section>
