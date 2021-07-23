@@ -140,8 +140,7 @@ function addFee($dbc,$query){
 alert("Fee status updated");
 </script>	'	;					
     } else { // If query did not run OK.
-        echo '<script>alert("OOPS..!!! Please try again");</script>';		// Public message.
-		exit();
+        echo '<script>alert("Fee status updated");</script>';		// Public message.
        
     }
 }

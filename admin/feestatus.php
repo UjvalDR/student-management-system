@@ -267,11 +267,12 @@ $examstatus=$_POST["examfeestatus"];
         addFee($dbc,$query);
 		
 
-		ob_flush();
+		
 }
 ?>
 
 <?php
+ob_flush();
 require('../footer.php');
 ?>
     
